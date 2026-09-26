@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belajar Q.S. Al-Hujurat Ayat 13 - PAI Kelas 4</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif; }
+  body {
+    background: linear-gradient(135deg, #a8e6cf 0%, #ffd3b6 50%, #ffaaa5 100%);
+    min-height: 100vh; padding: 10px;
+  }
+  .container {
+    max-width: 900px; margin: 0 auto; background: #fff;
+    border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  header {
+    background: linear-gradient(135deg, #2e8b57, #3cb371);
+    color: white; padding: 20px; text-align: center;
+    border-bottom: 5px solid #ffd700;
+  }
+  header h1 { font-size: 1.6em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+  header p { font-size: 1em; margin-top: 5px; }
+  .maskot { font-size: 2.5em; animation: bounce 2s infinite; display: inline-block; }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  nav {
+    display: flex; flex-wrap: wrap; background: #fff8dc;
+    border-bottom: 3px solid #ffd700;
+  }
+  nav button {
+    flex: 1; min-width: 100px; padding: 12px 8px; border: none;
+    background: transparent; cursor: pointer; font-size: 0.95em;
+    font-weight: bold; color: #2e8b57; transition: all 0.3s;
+    border-right: 2px solid #ffd700;
+  }
+  nav button:last-child { border-right: none; }
+  nav button:hover { background: #98fb98; }
+  nav button.active { background: #2e8b57; color: white; }
+  .content { padding: 25px; min-height: 400px; }
+  .page { display: none; animation: fadeIn 0.5s; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+  h2 { color: #2e8b57; margin-bottom: 15px; font-size: 1.5em; }
+  h3 { color: #ff6347; margin: 15px 0 10px; }
+  p, li { line-height: 1.7; color: #333; font-size: 1.05em; }
+  .ayat-box {
+    background: linear-gradient(135deg, #fff8dc, #faebd7);
+    border: 3px dashed #ffd700; border-radius: 20px;
+    padding: 25px; text-align: center; margin: 15px 0;
+    direction: rtl;
+  }
+  .ayat-arab {
+    font-size: 2em; color: #2e8b57; line-height: 1.8;
+    font-family: 'Traditional Arabic', 'Amiri', serif;
+  }
+  .ayat-latin {
+    direction: ltr; font-style: italic; color: #555;
+    margin-top: 15px; font-size: 1em;
+  }
+  .ayat-arti {
+    direction: ltr; background: #e0f7fa; padding: 15px;
+    border-radius: 15px; margin-top: 15px; color: #006064;
+    font-weight: bold;
+  }
+  .btn {
+    background: linear-gradient(135deg, #ff6347, #ff8c69);
+    color: white; border: none; padding: 12px 25px;
+    border-radius: 25px; font-size: 1em; font-weight: bold;
+    cursor: pointer; margin: 10px 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .btn:hover { transform: scale(1.05); }
+  .btn-audio { background: linear-gradient(135deg, #4169e1, #1e90ff); }
+  .info-card {
+    background: #f0fff0; border-left: 5px solid #2e8b57;
+    padding: 15px; margin: 10px 0; border-radius: 10px;
+  }
+  .info-card strong { color: #2e8b57; }
+  ul { padding-left: 25px; }
+  ul li { margin: 8px 0; }
+  .quiz-question {
+    background: #fff3e0; padding: 20px; border-radius: 15px;
+    margin: 15px 0; border: 2px solid #ffb74d;
+  }
+  .quiz-question p { font-weight: bold; font-size: 1.1em; margin-bottom: 10px; }
+  .quiz-option {
+    display: block; background: white; padding: 12px 15px;
+    margin: 8px 0; border-radius: 10px; cursor: pointer;
+    border: 2px solid #ddd; transition: all 0.3s;
+  }
+  .quiz-option:hover { background: #fff8dc; border-color: #ffd700; }
+  .quiz-option.correct { background: #90ee90; border-color: #2e8b57; }
+  .quiz-option.wrong { background: #ffb6c1; border-color: #ff6347; }
+  .score-box {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: white; padding: 20px; border-radius: 15px;
+    text-align: center; margin: 15px 0; font-size: 1.3em;
+    font-weight: bold;
+  }
+  .game-item {
+    background: #e1bee7; padding: 15px; margin: 10px 0;
+    border-radius: 15px; cursor: pointer; text-align: center;
+    border: 3px solid transparent; transition: all 0.3s;
+  }
+  .game-item:hover { transform: scale(1.03); }
+  .game-item.selected { border-color: #9c27b0; background: #ce93d8; }
+  .game-item.matched { background: #a5d6a7; border-color: #2e8b57; cursor: default; }
+  .game-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .feedback {
+    padding: 15px; border-radius: 10px; margin: 10px 0;
+    text-align: center; font-weight: bold; font-size: 1.1em;
+  }
+  .feedback.success { background: #c8e6c9; color: #1b5e20; }
+  .feedback.error { background: #ffcdd2; color: #b71c1c; }
+  footer {
+    background: #2e8b57; color: white; text-align: center;
+    padding: 15px; font-size: 0.9em;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.2em; }
+    .ayat-arab { font-size: 1.5em; }
+    nav button { font-size: 0.8em; padding: 10px 5px; }
+    .game-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="maskot">🌙✨</div>
+    <h1>Mari Mengaji Q.S. Al-Hujurāt</h1>
+    <p>Pendidikan Agama Islam & Budi Pekerti - Kelas 4 SD</p>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" data-page="beranda">🏠 Beranda</button>
+    <button class="nav-btn" data-page="ayat">📖 Ayat</button>
+    <button class="nav-btn" data-page="terjemah">📝 Terjemah</button>
+    <button class="nav-btn" data-page="kandungan">💡 Isi Kandungan</button>
+    <button class="nav-btn" data-page="kuis">🎯 Kuis</button>
+    <button class="nav-btn" data-page="game">🎮 Game</button>
+  </nav>
+
+  <div class="content">
+
+    <!-- BERANDA -->
+    <div class="page active" id="beranda">
+      <h2>🌟 Selamat Datang, Anak Hebat!</h2>
+      <div class="info-card">
+        <p>Halo teman-teman! 👋</p>
+        <p>Ayo belajar bersama tentang <strong>Q.S. Al-Hujurāt ayat 13</strong> yang mengajarkan kita tentang <strong>keberagaman</strong> dan <strong>saling mengenal (ta'aruf)</strong>.</p>
+      </div>
+      <h3>🎯 Tujuan Pembelajaran:</h3>
+      <ul>
+        <li>✅ Membaca Q.S. Al-Hujurāt ayat 13 dengan tartil</li>
+        <li>✅ Menghafal Q.S. Al-Hujurāt ayat 13</li>
+        <li>✅ Mengetahui arti dan isi kandungan ayat</li>
+        <li>✅ Memahami pentingnya saling mengenal & menghargai perbedaan</li>
+      </ul>
+      <h3>📚 Petunjuk Belajar:</h3>
+      <ul>
+        <li>👉 Klik menu di atas untuk berpindah halaman</li>
+        <li>👉 Baca ayat dengan pelan dan tartil</li>
+        <li>👉 Kerjakan kuis & game untuk menguji pemahamanmu</li>
+      </ul>
+      <p style="text-align:center; font-size:1.2em; margin-top:20px;">
+        <strong>Selamat Belajar! 🤗</strong>
+      </p>
+    </div>
+
+    <!-- AYAT -->
+    <div class="page" id="ayat">
+      <h2>📖 Bacaan Q.S. Al-Hujurāt Ayat 13</h2>
+      <div class="ayat-box">
+        <div class="ayat-arab">يَـٰٓأَيُّهَا ٱلنَّاسُ إِنَّا خَلَقْنَـٰكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَـٰكُمْ شُعُوبًا وَقَبَآئِلَ لِتَعَارَفُوٓا۟ ۚ إِنَّ أَكْرَمَكُمْ عِندَ ٱللَّهِ أَتْقَىٰكُمْ ۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌ</div>
+        <div class="ayat-latin">
+          Yā ayyuhan-nāsu innā khalaqnākum min żakarin wa unṡā wa ja'alnākum syu'ūban wa qabā'ila lita'ārafū, inna akramakum 'indallāhi atqākum, innallāha 'alīmun khabīr.
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <button class="btn btn-audio" onclick="bacaAyat()">🔊 Dengar Bacaan</button>
+        <button class="btn" onclick="berhenti()">⏹️ Berhenti</button>
+      </div>
+      <div class="info-card">
+        <p>💡 <strong>Tips:</strong> Bacalah ayat di atas dengan tartil, perlahan, dan penuh penghayatan. Ulangi beberapa kali sampai lancar!</p>
+      </div>
+    </div>
+
+    <!-- TERJEMAH -->
+    <div class="page" id="terjemah">
+      <h2>📝 Arti & Terjemah</h2>
+      <div class="ayat-arti">
+        "Wahai manusia! Sungguh, Kami telah menciptakan kamu dari seorang laki-laki dan seorang perempuan, kemudian Kami jadikan kamu berbangsa-bangsa dan bersuku-suku agar kamu saling mengenal. Sesungguhnya yang paling mulia di sisi Allah ialah yang paling bertakwa. Sungguh, Allah Maha Mengetahui, Maha Teliti."
+      </div>
+      <h3>🔍 Kosakata Penting:</h3>
+      <ul>
+        <li><strong>يَـٰٓأَيُّهَا ٱلنَّاسُ</strong> (Yā ayyuhan-nās) = Wahai manusia</li>
+        <li><strong>خَلَقْنَـٰكُم</strong> (khalaqnākum) = Kami telah menciptakan kamu</li>
+        <li><strong>شُعُوبًا</strong> (syu'ūban) = berbangsa-bangsa</li>
+        <li><strong>قَبَآئِلَ</strong> (qabā'ila) = bersuku-suku</li>
+        <li><strong>لِتَعَارَفُوا۟</strong> (lita'ārafū) = agar saling mengenal</li>
+        <li><strong>أَكْرَمَكُمْ</strong> (akramakum) = yang paling mulia</li>
+        <li><strong>أَتْقَىٰكُمْ</strong> (atqākum) = yang paling bertakwa</li>
+      </ul>
+    </div>
+
+    <!-- ISI KANDUNGAN -->
+    <div class="page" id="kandungan">
+      <h2>💡 Isi Kandungan Ayat</h2>
+      <div class="info-card">
+        <h3>1. 🌍 Semua Manusia Berasal dari Satu Pasangan</h3>
+        <p>Allah menciptakan manusia dari seorang laki-laki (Adam a.s.) dan perempuan (Hawa). Kita semua saudara!</p>
+      </div>
+      <div class="info-card">
+        <h3>2. 🌈 Allah Menciptakan Keberagaman</h3>
+        <p>Allah menjadikan kita berbeda-beda: berbeda suku, bangsa, bahasa, warna kulit. Ini adalah <strong>keindahan</strong>, bukan alasan untuk bertengkar!</p>
+      </div>
+      <div class="info-card">
+        <h3>3. 🤝 Saling Mengenal (Ta'aruf)</h3>
+        <p>Tujuan perbedaan adalah agar kita <strong>saling mengenal</strong>, berbagi kebaikan, dan bekerja sama.</p>
+      </div>
+      <div class="info-card">
+        <h3>4. ⭐ Takwa = Ukuran Kemuliaan</h3>
+        <p>Yang paling mulia di sisi Allah <strong>bukan</strong> yang paling kaya, pintar, atau cantik. Tapi yang paling <strong>bertakwa</strong> (taat kepada Allah).</p>
+      </div>
+      <div class="info-card">
+        <h3>5. 👀 Allah Maha Mengetahui</h3>
+        <p>Allah mengetahui segala sesuatu yang kita lakukan, baik yang tampak maupun tersembunyi.</p>
+      </div>
+      <h3>🌟 Penerapan dalam Kehidupan Sehari-hari:</h3>
+      <ul>
+        <li>✅ Berteman dengan siapa saja tanpa membedakan suku</li>
+        <li>✅ Menghargai teman yang berbeda agama, budaya, dan bahasa</li>
+        <li>✅ Tidak mengejek atau merendahkan orang lain</li>
+        <li>✅ Rajin beribadah dan berbuat baik</li>
+      </ul>
+    </div>
+
+    <!-- KUIS -->
+    <div class="page" id="kuis">
+      <h2>🎯 Kuis Interaktif</h2>
+      <p>Yuk uji pemahamanmu! Pilih jawaban yang paling benar.</p>
+      <div id="quiz-container"></div>
+      <div id="score-display"></div>
+      <div style="text-align:center;">
+        <button class="btn" onclick="cekJawaban()">✅ Cek Jawaban</button>
+        <button class="btn btn-audio" onclick="resetKuis()">🔄 Ulangi Kuis</button>
+      </div>
+    </div>
+
+    <!-- GAME -->
+    <div class="page" id="game">
+      <h2>🎮 Game: Cocokkan Pasangan!</h2>
+      <p>Klik potongan ayat Arab, lalu klik artinya yang tepat. Cocokkan semua pasangan!</p>
+      <div id="game-feedback"></div>
+      <div class="game-grid" id="game-grid"></div>
+      <div style="text-align:center; margin-top:15px;">
+        <button class="btn btn-audio" onclick="mulaiGame()">🔄 Main Lagi</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>📚 Media Pembelajaran PAI Kelas 4 SD | Kurikulum Merdeka</p>
+    <p>Dibuat dengan ❤️ untuk siswa-siswi hebat Indonesia</p>
+  </footer>
+</div>
+
+<script>
+  // NAVIGASI
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.page).classList.add('active');
+    });
+  });
+
+  // AUDIO BACAAN (Web Speech API)
+  function bacaAyat() {
+    if ('speechSynthesis' in window) {
+      const text = "Ya ayyuhan nasu inna khalaqnakum min zakarin wa untsa, wa ja'alnakum syu'uban wa qaba'ila lita'arafu, inna akramakum 'indallahi atqakum, innallaha 'alimun khabir.";
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ar-SA';
+      utter.rate = 0.8;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    } else {
+      alert('Maaf, browser kamu belum mendukung fitur audio. Silakan gunakan Chrome/Edge terbaru.');
+    }
+  }
+  function berhenti() { speechSynthesis.cancel(); }
+
+  // KUIS
+  const soal = [
+    {
+      q: "1. Q.S. Al-Hujurāt ayat 13 menjelaskan tentang ...",
+      options: ["Larangan mencuri", "Keberagaman manusia & saling mengenal", "Perintah shalat", "Kisah Nabi Musa"],
+      answer: 1
+    },
+    {
+      q: "2. Kata 'lita'ārafū' (لِتَعَارَفُوا۟) artinya ...",
+      options: ["Saling bermusuhan", "Saling mengenal", "Saling mengejek", "Saling menjauhi"],
+      answer: 1
+    },
+    {
+      q: "3. Ukuran kemuliaan seseorang di sisi Allah adalah ...",
+      options: ["Kekayaannya", "Kecantikannya", "Ketakwaannya", "Kepintarannya"],
+      answer: 2
+    },
+    {
+      q: "4. Allah menciptakan manusia dari ...",
+      options: ["Seorang laki-laki dan perempuan", "Tanah saja", "Cahaya", "Api"],
+      answer: 0
+    },
+    {
+      q: "5. Sikap yang sesuai dengan Q.S. Al-Hujurāt ayat 13 adalah ...",
+      options: ["Hanya berteman dengan satu suku", "Mengejek teman yang berbeda", "Menghargai perbedaan teman", "Menyombongkan diri"],
+      answer: 2
+    },
+    {
+      q: "6. 'Inna akramakum 'indallāhi atqākum' artinya ...",
+      options: ["Sesungguhnya yang paling pintar adalah yang paling kaya", "Sesungguhnya yang paling mulia di sisi Allah adalah yang paling bertakwa", "Sesungguhnya Allah Maha Besar", "Sesungguhnya manusia sama"],
+      answer: 1
+    },
+    {
+      q: "7. Allah memiliki sifat 'Alīm dan Khabīr, artinya ...",
+      options: ["Maha Pengasih & Maha Penyayang", "Maha Mengetahui & Maha Teliti", "Maha Besar & Maha Kuasa", "Maha Pemberi & Maha Adil"],
+      answer: 1
+    }
+  ];
+
+  function renderKuis() {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+    soal.forEach((s, i) => {
+      let html = `<div class="quiz-question" id="q${i}"><p>${s.q}</p>`;
+      s.options.forEach((opt, j) => {
+        html += `<div class="quiz-option" data-q="${i}" data-o="${j}" onclick="pilihJawaban(${i},${j})">${String.fromCharCode(65+j)}. ${opt}</div>`;
+      });
+      html += `</div>`;
+      container.innerHTML += html;
+    });
+  }
+
+  function pilihJawaban(q, o) {
+    document.querySelectorAll(`.quiz-option[data-q="${q}"]`).forEach(el => el.style.background = 'white');
+    document.querySelector(`.quiz-option[data-q="${q}"][data-o="${o}"]`).style.background = '#fff8dc';
+    document.querySelector(`.quiz-option[data-q="${q}"][data-o="${o}"]`).dataset.selected = "true";
+  }
+
+  function cekJawaban() {
+    let skor = 0;
+    soal.forEach((s, i) => {
+      const selected = document.querySelector(`.quiz-option[data-q="${i}"][data-selected="true"]`);
+      document.querySelectorAll(`.quiz-option[data-q="${i}"]`).forEach(el => {
+        el.classList.remove('correct','wrong');
+        if (parseInt(el.dataset.o) === s.answer) el.classList.add('correct');
+      });
+      if (selected && parseInt(selected.dataset.o) === s.answer) {
+        skor++;
+      } else if (selected) {
+        selected.classList.add('wrong');
+      }
+    });
+    const display = document.getElementById('score-display');
+    let pesan = '';
+    if (skor === soal.length) pesan = '🏆 SEMPURNA! Kamu luar biasa!';
+    else if (skor >= soal.length * 0.7) pesan = '🌟 BAGUS SEKALI! Pertahankan!';
+    else if (skor >= soal.length * 0.5) pesan = '👍 LUMAYAN! Ayo belajar lagi!';
+    else pesan = '💪 SEMANGAT! Coba baca lagi materinya ya!';
+    display.innerHTML = `<div class="score-box">Skor Kamu: ${skor} / ${soal.length}<br>${pesan}</div>`;
+  }
+
+  function resetKuis() {
+    document.querySelectorAll('.quiz-option').forEach(el => {
+      el.classList.remove('correct','wrong');
+      el.style.background = 'white';
+      delete el.dataset.selected;
+    });
+    document.getElementById('score-display').innerHTML = '';
+  }
+
+  // GAME COCOKKAN PASANGAN
+  const pasangan = [
+    { arab: "يَـٰٓأَيُّهَا ٱلنَّاسُ", arti: "Wahai manusia" },
+    { arab: "شُعُوبًا وَقَبَآئِلَ", arti: "Berbangsa-bangsa & bersuku-suku" },
+    { arab: "لِتَعَارَفُوا۟", arti: "Agar saling mengenal" },
+    { arab: "أَكْرَمَكُمْ ... أَتْقَىٰكُمْ", arti: "Yang paling mulia ... yang paling bertakwa" }
+  ];
+
+  let selectedArab = null;
+  let matchedCount = 0;
+
+  function mulaiGame() {
+    matchedCount = 0;
+    selectedArab = null;
+    const grid = document.getElementById('game-grid');
+    grid.innerHTML = '';
+    document.getElementById('game-feedback').innerHTML = '';
+
+    const arabItems = pasangan.map((p,i) => ({type:'arab', text:p.arab, id:i}));
+    const artiItems = pasangan.map((p,i) => ({type:'arti', text:p.arti, id:i}));
+    const all = [...arabItems, ...artiItems].sort(() => Math.random() - 0.5);
+
+    all.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'game-item';
+      div.textContent = item.text;
+      div.dataset.type = item.type;
+      div.dataset.id = item.id;
+      div.onclick = () => pilihItem(div);
+      grid.appendChild(div);
+    });
+  }
+
+  function pilihItem(el) {
+    if (el.classList.contains('matched')) return;
+    if (el.dataset.type === 'arab') {
+      document.querySelectorAll('.game-item[data-type="arab"]').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedArab = el;
+    } else if (el.dataset.type === 'arti' && selectedArab) {
+      if (selectedArab.dataset.id === el.dataset.id) {
+        selectedArab.classList.add('matched');
+        selectedArab.classList.remove('selected');
+        el.classList.add('matched');
+        matchedCount++;
+        selectedArab = null;
+        document.getElementById('game-feedback').innerHTML = '<div class="feedback success">✅ Benar! Hebat!</div>';
+        if (matchedCount === pasangan.length) {
+          document.getElementById('game-feedback').innerHTML = '<div class="feedback success">🏆 SELAMAT! Kamu berhasil mencocokkan semua pasangan! 🎉</div>';
+        }
+      } else {
+        document.getElementById('game-feedback').innerHTML = '<div class="feedback error">❌ Belum cocok, coba lagi ya!</div>';
+        selectedArab.classList.remove('selected');
+        selectedArab = null;
+      }
+    }
+  }
+
+  // INIT
+  renderKuis();
+  mulaiGame();
+</script>
+</body>
+</html>
